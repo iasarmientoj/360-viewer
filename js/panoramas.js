@@ -17,6 +17,5 @@ window.PANORAMAS = [
     lon: 0,
     lat: 0,
     fov: 75
-  },
-  { title: 'Prueba 02', url: 'images/panorama-01.jpg', lon: 180 }
+  }
 ];
