@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Visor 360°</title>
+<meta name="description" content="Visor de imágenes panorámicas equirectangulares 360° en el navegador.">
+<meta name="theme-color" content="#0b0d10">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='13' fill='none' stroke='%234da3ff' stroke-width='3'/><ellipse cx='16' cy='16' rx='6' ry='13' fill='none' stroke='%234da3ff' stroke-width='2'/></svg>">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/panoramas.js"></script>
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+
+<canvas id="view"></canvas>
+
+<!-- Pantalla de carga -->
+<div id="loader" class="overlay">
+  <div class="loader-box">
+    <div class="loader-title">Cargando panorámica</div>
+    <div class="bar"><div id="bar-fill"></div></div>
+    <div id="loader-pct" class="loader-pct">0%</div>
+  </div>
+</div>
+
+<!-- Mensaje de error -->
+<div id="error" class="overlay hidden">
+  <div class="loader-box">
+    <div class="loader-title">No se pudo cargar la imagen</div>
+    <div id="error-msg" class="loader-pct"></div>
+  </div>
+</div>
+
+<!-- Pista de uso -->
+<div id="hint" class="hint">Arrastra para mirar alrededor · rueda o pellizca para acercar</div>
+
+<!-- Barra superior -->
+<header class="topbar">
+  <h1 id="title">Visor 360°</h1>
+  <select id="scenes" class="select" aria-label="Escena"></select>
+</header>
+
+<!-- Barra de herramientas -->
+<nav class="toolbar" aria-label="Controles">
+  <button id="btn-prev"  class="btn" title="Escena anterior (←)">‹</button>
+  <button id="btn-next"  class="btn" title="Escena siguiente (→)">›</button>
+  <span class="sep"></span>
+  <button id="btn-out"   class="btn" title="Alejar (-)">−</button>
+  <button id="btn-in"    class="btn" title="Acercar (+)">+</button>
+  <button id="btn-reset" class="btn" title="Restablecer vista (0)">⟲</button>
+  <span class="sep"></span>
+  <button id="btn-auto"  class="btn" title="Rotación automática (R)">↻</button>
+  <button id="btn-open"  class="btn" title="Abrir imagen local">📂</button>
+  <button id="btn-full"  class="btn" title="Pantalla completa (F)">⛶</button>
+</nav>
+
+<input id="file" type="file" accept="image/*" hidden>
+
+<script type="module" src="js/viewer.js"></script>
+</body>
+</html>
